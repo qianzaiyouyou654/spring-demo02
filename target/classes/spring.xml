@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+
+
+    <bean id="classes" class="com.liusiqi.model.Classes">
+        <property name="id" value="uuu"/>
+        <property name="name" value="444"/>
+    </bean>
+
+    <bean id="classes2" class="com.liusiqi.model.Classes" depends-on="classes">
+        <property name="id" value="rrr"/>
+    </bean>
+
+    <bean id="student" class="com.liusiqi.model.Student">
+        <property name="id" value="111"/>
+        <property name="name" value="张三"/>
+        <property name="age" value="11"/>
+        <property name="birth" value="2022/04/01"/>
+        <property name="classes" ref="classes"/>
+<!--        <property name="classes.id" value="888"/>-->
+        <property name="arrays">
+            <array>
+                <value>111</value>
+                <value>222</value>
+                <value>111</value>
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <value>111</value>
+                <value>222</value>
+                <value>333</value>
+            </list>
+        </property>
+        <property name="sets">
+            <set>
+                <value>111</value>
+                <value>222</value>
+                <value>111</value>
+            </set>
+        </property>
+        <property name="maps">
+            <map key-type="java.lang.String" value-type="java.lang.Object">
+                <entry key="aaa" value="111"/>
+                <entry key="bbb" value-type="java.lang.Integer" value="666"/>
+                <entry key="ccc" value-ref="classes"/>
+            </map>
+        </property>
+    </bean>
+
+
+
+</beans>
